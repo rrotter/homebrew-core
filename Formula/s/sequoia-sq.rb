@@ -8,7 +8,7 @@ class SequoiaSq < Formula
 
   depends_on "capnp" => :build
   depends_on "nettle" => :build
-  depends_on "pkg-config" => :build
+  # depends_on "pkg-config" => :build
   depends_on "rust" => :build
 
   on_linux do
