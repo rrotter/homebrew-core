@@ -116,9 +116,10 @@ class Awscli < Formula
       #compdef aws
       _aws () {
         # install aws completer
-        local e
-        e=$(dirname ${funcsourcetrace[1]%:*})/aws_zsh_completer.sh
-        if [[ -f $e ]]; then source $e; fi
+        if (( ! ${+functions[complete]} )); then
+          autoload -Uz bashcompinit
+          bashcompinit
+        fi
         # confirm completer install was successful, then run the real completer
         [[ -n $_comps[aws] && $_comps[aws] != $0 ]] && ${(z)_comps[aws]}
       }
